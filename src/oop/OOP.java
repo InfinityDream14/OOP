@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 public class OOP{
 
     OOP(){
-        new LogIn();
+        new Admin();
     }
     
     public static void main (String[] args) {
