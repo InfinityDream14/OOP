@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package oop;
+package front;
 
 import javax.swing.JFrame;
 
@@ -13,8 +13,7 @@ import javax.swing.JFrame;
 public class OOP{
 
     OOP(){
-        new Admin();
-        //Testing
+        new LogIn();
     }
     
     public static void main (String[] args) {
