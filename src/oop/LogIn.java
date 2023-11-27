@@ -36,7 +36,7 @@ public class LogIn extends JFrame {
         panel1.setBounds(1, 30, 600, 300);
         panel1.setLayout(null);
         panel1.setBackground(Color.WHITE);
-//test
+//test test
         panel1.add(email);
         panel1.add(pass);
         email.setBounds(2, 2, 100, 20);
