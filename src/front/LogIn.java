@@ -4,9 +4,8 @@
  */
 package front;
 
-import back.Storage;
-import back.checkEP;
-import java.awt.Font;
+import back.*;
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -16,7 +15,8 @@ import javax.swing.*;
 public class LogIn extends JFrame {
 
     Storage s;
-    checkEP checkph = new checkEP();
+    Admin a = new Admin();
+    Operations checkph = new Operations();
     JPanel panel = new JPanel();
 
     JLabel title = new JLabel("LOG IN");
@@ -30,10 +30,15 @@ public class LogIn extends JFrame {
 
     JButton logIn = new JButton("LOG IN");
 
+    ImageIcon icon = new ImageIcon("user.png");
+    JLabel user = new JLabel(icon);
+
     public LogIn() {
         s = new Storage();
         design();
+
         
+
         showP.addActionListener(e -> {
             if (showP.isSelected()) {
                 gP.setEchoChar((char) 0);
@@ -43,9 +48,18 @@ public class LogIn extends JFrame {
         });
 
         logIn.addActionListener(e -> {
-            boolean flag = checkph.compareUser(gU.getText(), gP.getText());
-            if (flag == true) {
-                System.out.println(gU.getText());
+            int flag = checkph.checkUP(gU.getText(), gP.getText());
+            switch (flag) {
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Log In Successfully");
+                    a.admin();
+                    break;
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Wrong username");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Wrong password");
+                    break;
             }
         });
     }
@@ -54,6 +68,7 @@ public class LogIn extends JFrame {
         setLayout(null);
         setTitle("Log In");
         setSize(400, 480);
+
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -67,7 +82,10 @@ public class LogIn extends JFrame {
         panel.add(tP);
         panel.add(title);
 
-        title.setBounds(160, 5, 100, 20);
+        panel.add(user);
+        user.setBounds(150, 40, 100, 100);
+
+        title.setBounds(165, 5, 100, 20);
         title.setFont(new Font("Arial", Font.BOLD, 20));
 
         tU.setBounds(60, 220, 100, 20);
@@ -86,5 +104,6 @@ public class LogIn extends JFrame {
 
         panel.add(logIn);
         logIn.setBounds(140, 360, 120, 20);
+
     }
 }
